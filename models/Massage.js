@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const HospitalSchema = new mongoose.Schema(
+const MassageShopSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -32,6 +32,14 @@ const HospitalSchema = new mongoose.Schema(
     region: {
       type: String,
       required: [true, "Please add a region"],
+    },
+    opentime: {
+      type: Date,
+      require: [true, "Please add a open time"],
+    },
+    closetime: {
+      type: Date,
+      require: [true, "Please add a close time"],
     },
   },
   {
