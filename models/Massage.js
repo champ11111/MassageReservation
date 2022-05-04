@@ -28,17 +28,18 @@ const MassageSchema = new mongoose.Schema(
     },
     tel: {
       type: String,
+      required: [true, "Please add a telephone number"],
     },
     region: {
       type: String,
       required: [true, "Please add a region"],
     },
     opentime: {
-      type: Date,
+      type: String,
       require: [true, "Please add a open time"],
     },
     closetime: {
-      type: Date,
+      type: String,
       require: [true, "Please add a close time"],
     },
   },

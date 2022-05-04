@@ -81,6 +81,31 @@ exports.addAppointment = async (req, res, next) => {
       });
     }
 
+    const openTime = massage.opentime.split(":");
+    const openHour = openTime[0];
+    const openMinute = openTime[1];
+    const openTimeInSecond = openHour * 3600 + openMinute * 60;
+
+    const closeTime = massage.closetime.split(":");
+    const closeHour = closeTime[0];
+    const closeMinute = closeTime[1];
+    const closeTimeInSecond = closeHour * 3600 + closeMinute * 60;
+
+    let apptTime = new Date(req.body.apptDate);
+    let apptHour = apptTime.getHours();
+    let apptMinute = apptTime.getMinutes();
+    const apptTimeInSecond = apptHour * 3600 + apptMinute * 60;
+
+    if (
+      apptTimeInSecond < openTimeInSecond ||
+      apptTimeInSecond > closeTimeInSecond
+    ) {
+      return res.status(404).json({
+        success: false,
+        message: `Your reservation is not within the massage's business hours`,
+      });
+    }
+
     //add user Id to req.body
     req.body.user = req.user.id;
 
