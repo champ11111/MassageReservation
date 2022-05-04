@@ -111,6 +111,8 @@ exports.addAppointment = async (req, res, next) => {
 
     //Check for existing appointment
     const existedAppointments = await Appointment.find({ user: req.user.id });
+    console.log(req.user.id);
+    console.log(existedAppointments);
 
     //If the user is not an admin, they can only have 3 appointment.
     if (existedAppointments.length >= 3 && req.user.role !== "admin") {

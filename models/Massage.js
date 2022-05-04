@@ -64,4 +64,4 @@ MassageSchema.virtual("appointments", {
   justOne: false,
 });
 
-module.exports = mongoose.model("massage", MassageSchema);
+module.exports = mongoose.model("Massage", MassageSchema);
