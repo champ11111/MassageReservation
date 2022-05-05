@@ -200,7 +200,7 @@ exports.deleteAppointment = async (req, res, next) => {
       });
     }
 
-    await Appointment.remove();
+    await Appointment.deleteOne();
 
     res.status(200).json({
       success: true,
